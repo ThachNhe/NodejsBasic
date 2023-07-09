@@ -16,7 +16,6 @@
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
     </div>
-
     <div>
         <%= dataUser %>
             <div class="w3-container">
@@ -33,26 +32,50 @@
                     </thead>
                     <tbody>
                         <%= test %>
-                        <% for(let i=0; i < dataUser.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= dataUser[i].id %>
-                                </td>
-                                <td>
-                                    <%= dataUser[i].firstName %>
-                                </td>
-                                <td>
-                                    <%= dataUser[i].lastName %>
-                                </td>
-                                <td>
-                                    <a href = "/detail/user/<%= dataUser[i].id %>" target = "blank" >Detail</a>
-                                    <button type="button">Edit</button>
-                                    <button type="button">Delete</button>
-                                </td>
-                            </tr>
-                            <% } %>
+                            <% for(let i=0; i < dataUser.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= dataUser[i].id %>
+                                    </td>
+                                    <td>
+                                        <%= dataUser[i].firstName %>
+                                    </td>
+                                    <td>
+                                        <%= dataUser[i].lastName %>
+                                    </td>
+                                    <td>
+                                        <a href="/detail/user/<%= dataUser[i].id %>" target="blank">Detail</a>
+                                        <button type="button">Edit</button>
+                                        <button type="button">Delete</button>
+                                    </td>
+                                </tr>
+                                <% } %>
                     </tbody>
                 </table>
+            </div>
+            <div class="create-user-container">
+                <form action="/create-new-user" method="POST">
+                    <div>Create a new user</div>
+                    <div>
+                        <label>firstName</label>
+                        <input type="text" name="firstName"/>
+                    </div>
+                    <div>
+                        <label>lastName</label>
+                        <input type="text" name="lastName"/>
+                    </div>
+                    <div>
+                        <label>email</label>
+                        <input type="email" name="email" />
+                    </div>
+                    <div>
+                        <label>address</label>
+                        <input type="text" name = "address" />
+                    </div>
+                    <div>
+                        <button type="submit" class="btnSubmit">submit</button>
+                    </div>
+                </form>
             </div>
     </div>
 </body>
