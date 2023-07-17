@@ -47,7 +47,7 @@ let updateUser = async (req, res) => {
 let deleteUser = async (req, res) => {
   let id = req.params.id;
   if (!id) {
-    return res.status(4044).json({
+    return res.status(404).json({
       message: "Bad Request",
     });
   }
