@@ -30,6 +30,11 @@ const imageFilter = function (req, file, cb) {
 
 let upload = multer({ storage: storage, fileFilter: imageFilter });
 
+let uploadMultipleFiles = multer({
+  storage: storage,
+  fileFilter: imageFilter,
+}).array("multiple_images", 3);
+
 const initWebRoute = (app) => {
   router.get("/", homeController.getHomePage);
   router.get("/about", homeController.getAboutPage);
@@ -43,6 +48,12 @@ const initWebRoute = (app) => {
     "/upload-profile-pic",
     upload.single("profile_pic"),
     homeController.uploadProfilePic
+  );
+
+  router.post(
+    "/upload-multiple-images",
+    uploadMultipleFiles,
+    homeController.uploadMultipleImages
   );
   return app.use("/", router);
 };
